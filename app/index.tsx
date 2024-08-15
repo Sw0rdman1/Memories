@@ -1,11 +1,11 @@
-import Button from '@/components/Button'
-import { Text } from '@/components/Themed'
+import { Text } from '@/components/ui/Themed'
 import { Image } from 'expo-image'
 import { StyleSheet, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import AntDesign from '@expo/vector-icons/AntDesign';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { useRouter } from 'expo-router'
+import Button from '@/components/ui/Button';
 
 const WelcomeScreen = () => {
     const { bottom } = useSafeAreaInsets()
