@@ -5,6 +5,7 @@ import Button from "../ui/Button";
 import { router } from "expo-router";
 import { loginValidation } from "@/utils/validation";
 import { EmailInput, PasswordInput } from "./AuthInputs";
+import { calculateStatus } from "@/utils/helpers";
 
 const initialValues = {
   email: "",
@@ -61,7 +62,7 @@ const LogInForm = () => {
                 Object.keys(touched).length === 0
               }
               onPress={handleSubmit}
-              text="Log In"
+              title="Log In"
             />
           </View>
         </View>
