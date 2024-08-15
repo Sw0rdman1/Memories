@@ -5,9 +5,15 @@ import { StyleSheet, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import AntDesign from '@expo/vector-icons/AntDesign';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
+import { useRouter } from 'expo-router'
 
 const WelcomeScreen = () => {
     const { bottom } = useSafeAreaInsets()
+    const router = useRouter()
+
+    const openQRScannerHandler = () => {
+        router.push('/scan-qr')
+    }
 
     return (
         <View style={styles.container}>
@@ -30,7 +36,7 @@ const WelcomeScreen = () => {
                 />
                 <Button
                     title="Scan QR Code"
-                    onPress={() => { }}
+                    onPress={openQRScannerHandler}
                     inverted
                     icon={<AntDesign name="qrcode" size={24} color="#2C3E50" />}
                 />
