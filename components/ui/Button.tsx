@@ -1,3 +1,4 @@
+import { useColors } from '@/hooks/useColors'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 
 interface ButtonProps {
@@ -9,16 +10,20 @@ interface ButtonProps {
 }
 
 const Button: React.FC<ButtonProps> = ({ title, onPress, disabled, inverted, icon }) => {
+    const { tint } = useColors()
+
     return (
         <TouchableOpacity
+            activeOpacity={0.8}
             onPress={onPress}
             style={[
+                { backgroundColor: tint },
                 styles.button,
                 inverted && styles.buttonInverted,
                 disabled && { backgroundColor: '#2C3E5060' },
             ]}
         >
-            <Text style={[styles.text, inverted && styles.textInverted]}>
+            <Text style={[styles.text, inverted && { color: tint }]}>
                 {title}
             </Text>
             {icon && <View style={{ marginLeft: 10 }}>{icon}</View>}
@@ -31,7 +36,6 @@ export default Button
 const styles = StyleSheet.create({
     button: {
         marginTop: 20,
-        backgroundColor: '#2C3E50',
         height: 50,
         justifyContent: 'center',
         width: '100%',
@@ -48,7 +52,5 @@ const styles = StyleSheet.create({
         color: 'white',
         textAlign: 'center',
     },
-    textInverted: {
-        color: '#2C3E50',
-    },
+
 })

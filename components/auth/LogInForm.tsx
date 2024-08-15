@@ -35,7 +35,7 @@ const LogInForm = () => {
         touched,
       }) => (
         <View style={styles.container}>
-          <Text style={styles.title}>Welcome Back!</Text>
+          <Text style={styles.title}>Welcome</Text>
           <EmailInput
             onChangeText={handleChange("email")}
             onBlur={handleBlur("email")}

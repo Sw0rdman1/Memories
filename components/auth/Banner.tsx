@@ -1,5 +1,6 @@
 import { Image } from 'expo-image'
 import { StyleSheet, View } from 'react-native'
+import Animated, { FadeIn } from 'react-native-reanimated'
 
 interface BannerProps {
     source: string
@@ -8,14 +9,17 @@ interface BannerProps {
 
 const Banner: React.FC<BannerProps> = ({ source, height }) => {
     return (
-        <View style={[styles.imageContainer, { height }]}>
+        <Animated.View
+            entering={FadeIn.duration(500)}
+            style={[styles.imageContainer, { height }]}
+        >
             <View style={styles.imageChildContainer}>
                 <Image
                     source={source}
                     style={styles.image}
                 />
             </View>
-        </View>
+        </Animated.View>
     )
 }
 

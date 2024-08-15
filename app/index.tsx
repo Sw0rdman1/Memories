@@ -15,6 +15,10 @@ const WelcomeScreen = () => {
         router.push('/scan-qr')
     }
 
+    const navigateLogInHandler = () => {
+        router.push('/log-in')
+    }
+
     return (
         <View style={styles.container}>
             <View style={[StyleSheet.absoluteFill, { backgroundColor: 'black', opacity: 0.4 }]} />
@@ -31,7 +35,7 @@ const WelcomeScreen = () => {
                 </Text>
                 <Button
                     title="Sign In"
-                    onPress={() => { }}
+                    onPress={navigateLogInHandler}
                     icon={<FontAwesome name="sign-in" size={20} color="white" />}
                 />
                 <Button
