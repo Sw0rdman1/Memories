@@ -3,17 +3,19 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 interface ButtonProps {
     title: string
     onPress: () => void
+    disabled?: boolean
     inverted?: boolean
     icon?: React.ReactNode
 }
 
-const Button: React.FC<ButtonProps> = ({ title, onPress, inverted, icon }) => {
+const Button: React.FC<ButtonProps> = ({ title, onPress, disabled, inverted, icon }) => {
     return (
         <TouchableOpacity
             onPress={onPress}
             style={[
                 styles.button,
                 inverted && styles.buttonInverted,
+                disabled && { backgroundColor: '#2C3E5060' },
             ]}
         >
             <Text style={[styles.text, inverted && styles.textInverted]}>
