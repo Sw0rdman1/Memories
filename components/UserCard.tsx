@@ -1,5 +1,6 @@
 import { Image } from 'expo-image';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import Animated, { FadeInDown, FadeInUp, FadeOutDown, FadeOutUp } from 'react-native-reanimated';
 
 interface UserCardProps {
     data: string;
@@ -15,16 +16,22 @@ const UserCard: React.FC<UserCardProps> = ({ data }) => {
 
 
     return (
-        <TouchableOpacity style={styles.container}>
-            <Image
-                source={{ uri: user.image }}
-                style={styles.image}
-            />
-            <View style={styles.textContainer}>
-                <Text style={styles.title}>{user.name}</Text>
-                <Text style={styles.dates}>{user.dateOfBirth} - {user.dateOfDeath}</Text>
-            </View>
-        </TouchableOpacity>
+        <Animated.View
+            entering={FadeInDown.duration(300)}
+            exiting={FadeOutUp.duration(300)}
+            style={styles.container}
+        >
+            <TouchableOpacity style={styles.touchableContainer}>
+                <Image
+                    source={{ uri: user.image }}
+                    style={styles.image}
+                />
+                <View style={styles.textContainer}>
+                    <Text style={styles.title}>{user.name}</Text>
+                    <Text style={styles.dates}>{user.dateOfBirth} - {user.dateOfDeath}</Text>
+                </View>
+            </TouchableOpacity>
+        </Animated.View>
     )
 }
 
@@ -36,10 +43,14 @@ const styles = StyleSheet.create({
         bottom: 50,
         left: 20,
         right: 20,
-        flexDirection: 'row',
         padding: 10,
         backgroundColor: 'white',
         borderRadius: 10,
+    },
+    touchableContainer: {
+        width: '100%',
+        height: '100%',
+        flexDirection: 'row',
     },
     image: {
         width: 70,

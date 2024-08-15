@@ -9,6 +9,9 @@ export default function ScanQRScreen() {
 
     const handleScan = (event: { data: string }) => {
         setSuccessfullScan(event.data);
+        setTimeout(() => {
+            setSuccessfullScan('');
+        }, 5000);
     };
 
     if (!permission) {
@@ -28,9 +31,6 @@ export default function ScanQRScreen() {
 
     return (
         <View style={styles.container}>
-            <View style={[styles.titleContainer]}>
-                <Text style={styles.title}>Scan QR Code to relive memories</Text>
-            </View>
             <CameraView
                 style={styles.camera}
                 facing={'back'}
@@ -39,6 +39,9 @@ export default function ScanQRScreen() {
                     barcodeTypes: ["pdf417", "aztec", "ean13", "ean8", "upc_a", "upc_e", "code128", "code39", 'itf14'],
                 }}
             />
+            <View style={[styles.titleContainer]}>
+                <Text style={styles.title}>Scan QR Code to relive memories</Text>
+            </View>
             {successfullScan && (
                 <UserCard data={successfullScan} />
             )}
