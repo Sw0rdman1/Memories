@@ -68,6 +68,7 @@ const styles = StyleSheet.create({
     },
     dates: {
         fontSize: 16,
+        fontWeight: '600',
         color: 'gray',
     },
 })

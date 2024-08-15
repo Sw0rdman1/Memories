@@ -6,11 +6,15 @@ import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 export default function ScanQRScreen() {
     const [permission, requestPermission] = useCameraPermissions();
     const [successfullScan, setSuccessfullScan] = useState('');
+    const [cardDispayed, setCardDispayed] = useState(false);
 
     const handleScan = (event: { data: string }) => {
+        if (cardDispayed) return;
         setSuccessfullScan(event.data);
+        setCardDispayed(true);
         setTimeout(() => {
             setSuccessfullScan('');
+            setCardDispayed(false);
         }, 5000);
     };
 
