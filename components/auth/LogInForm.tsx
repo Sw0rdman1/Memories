@@ -13,9 +13,12 @@ const initialValues = {
 };
 
 const LogInForm = () => {
-
   const onSubmitHandler = async (values: typeof initialValues) => {
-
+    try {
+      router.push("/home");
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
